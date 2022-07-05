@@ -43,10 +43,60 @@ Person.prototype.greet = function () {
 // constructor functions let us creates objects with some default fields and values if you want to put like it this
 // prototypes let allow us to inherite from objects, so ey are on different levels
 
-function Person(name, age) {
+function NewPerson(name, age) {
   this.name = name;
   this.age = age;
 }
 
-var max = new Person("max", 27);
-var ana = new Person("ana", 32);
+var max = new NewPerson("max", 27);
+var ana = new NewPerson("ana", 32);
+
+// "this" keyword - on the top level, it is referring to the global object (window object)
+// - in the object it is referring to the object
+// - but the general rule is that "this"  always refer to the left part of the dot which executes something where this is included
+
+function fn(msg) {
+  console.log(msg + this);
+}
+
+fn(); //this will refer to window object
+
+// "this" won't always refers to the same thing, it is refering to whatever calls something where this is used in
+// so whichever calls a function where this is used in, that is what this refer to
+
+var obj = {
+  obfn: fn,
+};
+
+var person = {
+  name: "Max",
+};
+
+// KEY RULE: "this" refers to whatever calls function
+// bind, call, apply
+// bind, call, apply - methods which makes sure that function you call uses "this" in the right context
+
+// bind - you can bind the this value and use it later because it's not called instantly,
+// call - it si called instantly
+// apply - it generally works the same as call, it also calls the function immeditely but you pass the arguments not as a comma separated list of arguments but instead, as an array,
+
+obj.obfn.bind(person, "bind")();
+obj.obfn.call(person, "call");
+obj.obfn.apply(person, ["apply"]);
+
+// creating properties with defineProperty():
+Object.defineProperty(obj, "lastName", {
+  value: "maxic",
+  writable: true,
+});
+
+console.log(obj.lastName);
+
+// defineProperty() is useful if you want to create a property with a more detailed confguration
+
+// in - find out if some property excist in object
+console.log("name" in person);
+// for in - loop through all the fields
+for (var value in person) {
+  console.log(value);
+}
