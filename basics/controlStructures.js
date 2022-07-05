@@ -25,3 +25,33 @@ switch (luckyNumber) {
   default:
     console.log("default");
 }
+
+// for loop
+
+for (var i = 0; i < 5; i++) {
+  for (var j = 0; j < 2; j++) {
+    if (i == 1) {
+      console.log("breakkkkkkkkkk");
+      break;
+    }
+    console.log(i * j);
+  }
+}
+
+// while loop
+
+var condition = true;
+var i = 3;
+
+while (condition) {
+  if (i == 3) {
+    condition = false;
+  }
+  console.log(i);
+  i++;
+}
+
+/** do {
+ * console.log('executed);
+ * }
+ * while (condition) */
