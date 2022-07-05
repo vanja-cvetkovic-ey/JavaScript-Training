@@ -1,6 +1,6 @@
-function calc() {
-  console.log("inside function");
+function calc(numb1, numb2) {
+  return numb1 + numb2;
 }
 
-var anotherFn = calc();
-console.log(anotherFn);
+var calculator = calc;
+console.log(calculator(15, 2));
