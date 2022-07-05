@@ -45,7 +45,6 @@
 // null cant be comapred, but it can be comapred with a undefiend
 // undefiend campared with anything except the null
 
-// boolean
-// the conditons treating
+//ternary operator: a === b ? true : false
 
-//ternary operator:
+// operator precendence
